@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { copy } from '../../../data/site.js';
+import { projects } from '../../../data/projects.js';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap((lang) => projects.map((project) => ({
+    params: { lang, slug: project.slug },
+    props: { project },
+  })));
+}
+
+const lang = Astro.params.lang === 'en' ? 'en' : 'zh';
+const project = Astro.props.project;
+const t = copy[lang];
+const isEn = lang === 'en';
+const projectPath = `/projects/${project.slug}/`;
+---
+<BaseLayout lang={lang} title={project.title[lang]} description={project.summary[lang]} currentPath={projectPath}>
+  <section class="case-hero">
+    <div class="case-hero-inner">
+      <div class="breadcrumb"><a href={`/${lang}/`}>{isEn ? 'Home' : '首页'}</a><span>/</span><a href={`/${lang}/#industrial-design`}>{t.industrialTitle}</a><span>/</span><span>{project.number}</span></div>
+      <div class="case-kicker">{project.number} / {project.category} / {project.year}</div>
+      <h1 class="case-title" transition:name={`project-title-${project.slug}`}>{project.title[lang]}</h1>
+      <p class="case-subtitle">{project.subtitle[lang]}</p>
+      <div class="case-meta-grid">
+        <div class="case-meta"><span>{t.metadata.role}</span><strong>{project.role[lang]}</strong></div>
+        <div class="case-meta"><span>{t.metadata.type}</span><strong>{project.type[lang]}</strong></div>
+        <div class="case-meta"><span>{t.metadata.year}</span><strong>{project.year}</strong></div>
+        <div class="case-meta"><span>{t.metadata.status}</span><strong>{t.statusConcept}</strong></div>
+      </div>
+    </div>
+  </section>
+  <div class="case-cover-wrap"><img class="case-cover" transition:name={`project-cover-${project.slug}`} src={project.cover} alt={project.alt[lang]} width="1600" height="1100" fetchpriority="high" decoding="async" /></div>
+  <div class="case-body">
+    <aside class="case-side">
+      <div class="case-side-label">{isEn ? 'On this page' : '本页目录'}</div>
+      <ul>
+        <li><a href="#overview">{t.project.overview}</a></li>
+        <li><a href="#challenge">{t.project.brief}</a></li>
+        <li><a href="#approach">{t.project.approach}</a></li>
+        <li><a href="#process">{t.project.process}</a></li>
+        <li><a href="#gallery">{t.project.gallery}</a></li>
+        <li><a href="#outcome">{t.project.outcome}</a></li>
+      </ul>
+    </aside>
+    <article class="case-content">
+      <section class="case-section" id="overview"><span class="section-index">01 /</span><h2>{t.project.overview}</h2><p>{project.overview[lang]}</p></section>
+      <section class="case-section" id="challenge"><span class="section-index">02 /</span><h2>{t.project.brief}</h2><p>{project.challenge[lang]}</p></section>
+      <section class="case-section" id="approach"><span class="section-index">03 /</span><h2>{t.project.approach}</h2><p>{project.approach[lang]}</p></section>
+      <section class="case-section" id="process"><span class="section-index">04 /</span><h2>{t.project.process}</h2>
+        <div class="process-list">{project.process.map((step) => <div class="process-item"><h3>{step.title[lang]}</h3><p>{step.text[lang]}</p></div>)}</div>
+      </section>
+      <section class="case-section" id="gallery"><span class="section-index">05 /</span><h2>{t.project.gallery}</h2><div class="gallery-grid" data-gallery>
+          {project.gallery.map((image, index) => (
+            <button class="gallery-trigger" type="button" data-lightbox-trigger data-src={image} data-alt={`${project.title[lang]} — ${isEn ? 'visual study' : '视觉研究'} ${index + 1}`} aria-label={`${isEn ? 'Open image' : '放大图片'} ${index + 1}`}>
+              <img src={image} alt={`${project.title[lang]} — ${isEn ? 'visual study' : '视觉研究'} ${index + 1}`} width="1000" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-trigger-icon" aria-hidden="true">＋</span>
+            </button>
+          ))}
+        </div></section>
+      <section class="case-section" id="outcome"><span class="section-index">06 /</span><h2>{t.project.outcome}</h2><p>{project.outcome[lang]}</p><div class="tag-list">{project.tags.map((tag) => <span class="tag">{tag}</span>)}</div></section>
+      <div class="disclaimer">{t.project.disclaimer}</div>
+    </article>
+  </div>
+  <dialog class="media-lightbox" data-lightbox aria-label={isEn ? 'Image viewer' : '图片查看器'}>
+    <div class="lightbox-top"><span data-lightbox-count>01 / 02</span><button type="button" class="lightbox-close" data-lightbox-close aria-label={isEn ? 'Close image viewer' : '关闭图片查看器'}>×</button></div>
+    <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label={isEn ? 'Previous image' : '上一张图片'}>←</button>
+    <figure><img src="" alt="" data-lightbox-image /><figcaption data-lightbox-caption></figcaption></figure>
+    <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label={isEn ? 'Next image' : '下一张图片'}>→</button>
+  </dialog>
+  <nav class="case-end" aria-label={isEn ? 'Case navigation' : '案例导航'}>
+    <a href={`/${lang}/#industrial-design`}>← {t.project.back}</a>
+    {projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length] && <a href={`/${lang}/projects/${projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length].slug}/`}>{t.project.next} ↗</a>}
+  </nav>
+</BaseLayout>

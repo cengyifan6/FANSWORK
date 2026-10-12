@@ -1,0 +1,23 @@
+---
+const { lang, currentPath = '' } = Astro.props;
+const isEn = lang === 'en';
+const labels = isEn
+  ? [{ id: 'about', label: 'About' }, { id: 'industrial-design', label: 'Work' }, { id: 'digital-projects', label: 'Digital' }, { id: 'philosophy', label: 'Approach' }, { id: 'contact', label: 'Contact' }]
+  : [{ id: 'about', label: '关于' }, { id: 'industrial-design', label: '作品' }, { id: 'digital-projects', label: '数字项目' }, { id: 'philosophy', label: '理念' }, { id: 'contact', label: '联系' }];
+const home = `/${lang}/`;
+const isCase = currentPath.startsWith('/projects/');
+const counterpart = isCase ? `/${isEn ? 'zh' : 'en'}${currentPath}` : `/${isEn ? 'zh' : 'en'}/`;
+---
+<header class="site-header" id="top" data-site-header>
+  <a class="wordmark" href={home} aria-label={isEn ? 'Home' : '返回首页'}>
+    <span class="wordmark-mark">E.</span><span class="wordmark-text">EVAN<br /><small>DESIGN PORTFOLIO</small></span>
+  </a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label={isEn ? 'Open navigation' : '打开导航'} data-menu-toggle>
+    <span></span><span></span><span class="sr-only">{isEn ? 'Toggle navigation' : '切换导航'}</span>
+  </button>
+  <nav class="primary-nav" id="primary-nav" aria-label={isEn ? 'Primary navigation' : '主导航'} data-primary-nav>
+    {labels.map((item) => <a href={`${home}#${item.id}`} data-nav-section={item.id}>{item.label}</a>)}
+    <a class="language-link" href={counterpart} lang={isEn ? 'zh-CN' : 'en'}>{isEn ? '中' : 'EN'} <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+

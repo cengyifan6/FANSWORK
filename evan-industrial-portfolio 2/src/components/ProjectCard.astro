@@ -1,0 +1,19 @@
+---
+const { project, lang } = Astro.props;
+const isEn = lang === 'en';
+const title = project.title[lang];
+const summary = project.summary[lang];
+const link = `/${lang}/projects/${project.slug}/`;
+---
+<article class="project-card" data-project-card data-category={project.category}>
+  <a class="project-image-link" href={link} aria-label={`${isEn ? 'View project' : '查看项目'}: ${title}`}>
+    <img class="project-cover" transition:name={`project-cover-${project.slug}`} src={project.cover} alt={project.alt[lang]} width="1200" height="840" loading="lazy" decoding="async" />
+    <span class="image-arrow" aria-hidden="true"><span>↗</span><small>{isEn ? 'VIEW' : '查看'}</small></span>
+  </a>
+  <div class="project-meta"><span>{project.number} / {project.category}</span><span>{project.year}</span></div>
+  <h3><a href={link} transition:name={`project-title-${project.slug}`}>{title}</a></h3>
+  <p class="project-subtitle">{project.subtitle[lang]}</p>
+  <p class="project-summary">{summary}</p>
+  <div class="tag-list">{project.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+  <a class="text-link" href={link}>{isEn ? 'Explore case study' : '查看项目案例'} <span aria-hidden="true">↗</span></a>
+</article>

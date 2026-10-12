@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site.js';
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+---
+<footer class="site-footer">
+  <div class="footer-top">
+    <a class="wordmark footer-wordmark" href={`/${lang}/`} aria-label={isEn ? 'Back to home' : '返回首页'}><span class="wordmark-mark">E.</span><span class="wordmark-text">EVAN<br /><small>DESIGN PORTFOLIO</small></span></a>
+    <p>{isEn ? 'Design for clarity. Built around real use.' : '让功能清晰，让设计回到真实使用。'}</p>
+    <a class="back-top" href="#top">{isEn ? 'Back to top' : '返回顶部'} <span aria-hidden="true">↑</span></a>
+  </div>
+  <div class="footer-bottom">
+    <span>© {new Date().getFullYear()} {site.name}. {isEn ? 'All rights reserved.' : '保留所有权利。'}</span>
+    <span>{isEn ? 'Independent design practice / Portfolio' : '独立设计实践 / 作品集'}</span>
+  </div>
+</footer>

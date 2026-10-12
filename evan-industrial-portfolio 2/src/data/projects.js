@@ -1,0 +1,62 @@
+// Sample content only. Replace copy, dates, role descriptions, and assets with verified project information.
+export const projects = [
+  {
+    slug: 'corrugated-laser-printing', number: '01', category: 'Industrial Equipment', year: '2025', cover: '/images/laser-printer.svg', alt: { zh: '瓦楞纸激光印刷设备概念造型示意', en: 'Concept form study of a corrugated-board laser printing system' },
+    title: { zh: '瓦楞纸激光印刷设备', en: 'Corrugated-board Laser Printing System' },
+    subtitle: { zh: '功能分区 · 操作可达性 · 品牌化装备', en: 'Functional zoning · Accessibility · Equipment identity' },
+    summary: { zh: '围绕设备操作、维护与安全识别，探索大型工业装备的形式秩序与用户体验。', en: 'Exploring form, service access, and operator experience for large-format industrial equipment.' },
+    tags: ['Industrial Design', 'User Research', 'CMF'],
+    role: { zh: '概念与外观设计（示例）', en: 'Concept & exterior design (sample)' }, type: { zh: '工业装备 / 设计研究', en: 'Industrial equipment / Design research' },
+    overview: { zh: '本案例以瓦楞纸激光印刷设备为研究对象，尝试将复杂的生产设备拆解为操作、观察、维护与防护等功能区域，并通过统一的色彩与形态建立清晰的视觉层级。', en: 'This sample case uses a corrugated-board laser printing system to explore how a complex machine can be organized into operation, observation, service, and safety zones with a consistent visual hierarchy.' },
+    challenge: { zh: '大型装备经常由工程模块逐步叠加，造成视觉语言零散、维护入口不明显，以及新用户难以迅速理解关键操作区域。造型需要在不干扰结构、散热和检修的前提下提升可读性。', en: 'Large equipment can accumulate engineering modules over time, leading to fragmented visual language, unclear service access, and a steep learning curve. Form must improve legibility without compromising structure, cooling, or maintenance.' },
+    approach: { zh: '以操作路径组织外观分区；用高对比色标示重要的操作与风险区域；将高频维护位置设计为清晰的门板界面；以耐污深色底部承接设备重量感。', en: 'Organize exterior zones around the operator journey; use controlled contrast for key controls and risk areas; make frequent service points legible; and use a durable dark lower zone to visually anchor the machine.' },
+    process: [{ title: { zh: '01 / 场景梳理', en: '01 / Context mapping' }, text: { zh: '按操作、观察、上料、检修与清洁任务建立功能关系。', en: 'Map operation, monitoring, loading, service, and cleaning tasks.' } }, { title: { zh: '02 / 形态分区', en: '02 / Form zoning' }, text: { zh: '通过体块和面板边界，让功能层级在远距离也可辨识。', en: 'Use volumes and panel boundaries to make functional hierarchy legible at a glance.' } }, { title: { zh: '03 / CMF 推演', en: '03 / CMF exploration' }, text: { zh: '用暖白、深灰和少量强调色平衡洁净感、耐久性与识别性。', en: 'Balance cleanliness, durability, and recognition with warm white, dark grey, and restrained accent color.' } }],
+    outcome: { zh: '形成一套以功能可读性和维护体验为核心的造型方向。此处为示例描述，发布前请替换为真实设计结果、评审反馈或验证数据。', en: 'A form direction centered on functional legibility and service experience. Replace this sample statement with verified outcomes, review feedback, or validation data before publishing.' },
+    gallery: ['/images/laser-printer-detail.svg', '/images/laser-printer.svg'],
+  },
+  {
+    slug: 'commercial-vehicle-form', number: '02', category: 'Mobility Design', year: '2026', cover: '/images/commercial-truck.svg', alt: { zh: '商用卡车造型概念研究示意', en: 'Commercial truck form-language concept study' },
+    title: { zh: '商用车造型趋势研究', en: 'Commercial Vehicle Form Study' },
+    subtitle: { zh: '空气动力学 · 电动化 · 家族识别', en: 'Aerodynamics · Electrification · Family identity' },
+    summary: { zh: '研究电动化、气动效率与品牌识别如何共同影响商用车的前脸、体量和细节。', en: 'Examining how electrification, aerodynamic efficiency, and brand identity shape a commercial vehicle.' },
+    tags: ['Mobility', 'Form Language', 'Trend Research'],
+    role: { zh: '趋势研究与概念推演（示例）', en: 'Trend research & concept exploration (sample)' }, type: { zh: '商用车 / 设计研究', en: 'Commercial vehicle / Design research' },
+    overview: { zh: '以干线重卡与城市配送车辆为例，梳理不同工况对驾驶室比例、视野、进气开口、灯光签名与耐久部件的影响。', en: 'Using long-haul tractors and urban delivery vehicles as reference categories, this study maps how different operating contexts influence cab proportion, visibility, openings, lighting signatures, and durable components.' },
+    challenge: { zh: '商用车造型既要表达可靠与力量，也必须满足能耗、视野、安全、维修和成本等约束。单纯追求乘用车化或未来感，容易与真实使用场景脱节。', en: 'Commercial vehicles must communicate reliability and capability while meeting energy, visibility, safety, service, and cost constraints. Styling for a passenger-car look or a futuristic image alone may miss the operating context.' },
+    approach: { zh: '从产品品类和工况定义造型优先级；通过灯光图形、前脸分区和几何母题建立家族识别；将气动方案作为可验证的工程假设，而非纯粹视觉修辞。', en: 'Set priorities by segment and duty cycle; build family identity through lighting, front-end zoning, and geometric motifs; and treat aerodynamic ideas as engineering hypotheses to validate rather than visual decoration.' },
+    process: [{ title: { zh: '01 / 竞品与趋势', en: '01 / Benchmark & trends' }, text: { zh: '从动力路线、运营工况和品牌语言建立对比维度。', en: 'Create comparison dimensions across powertrain, duty cycle, and brand language.' } }, { title: { zh: '02 / 体量与比例', en: '02 / Volume & proportion' }, text: { zh: '推演驾驶室前部、侧面轮廓与上下体量的视觉秩序。', en: 'Explore the visual hierarchy of the cab front, side silhouette, and upper/lower volumes.' } }, { title: { zh: '03 / 识别系统', en: '03 / Identity system' }, text: { zh: '把灯光、色彩与耐久功能件归纳为可扩展的家族设计原则。', en: 'Translate lighting, color, and durable functional parts into a scalable family design system.' } }],
+    outcome: { zh: '输出可用于前期概念讨论的造型语汇与设计策略。此处为模板示例，不包含经过实车风洞或量产验证的性能结论。', en: 'A set of form-language principles and design strategies for early concept discussion. This sample does not claim wind-tunnel or production validation.' },
+    gallery: ['/images/commercial-truck-detail.svg', '/images/commercial-truck.svg'],
+  },
+  {
+    slug: 'urban-mobility-device', number: '03', category: 'Product Design', year: '2024', cover: '/images/urban-device.svg', alt: { zh: '城市出行设备产品概念示意', en: 'Urban mobility product concept illustration' },
+    title: { zh: '城市移动产品概念', en: 'Urban Mobility Product Concept' },
+    subtitle: { zh: '人机关系 · 结构整合 · CMF', en: 'Human factors · Architecture · CMF' },
+    summary: { zh: '通过简化的结构关系与克制的材质对比，探索面向城市环境的移动产品表达。', en: 'Exploring a calm urban product language through clear architecture and restrained material contrast.' },
+    tags: ['Product Design', 'Human Factors', 'CMF'],
+    role: { zh: '产品概念设计（示例）', en: 'Product concept design (sample)' }, type: { zh: '移动产品 / 概念研究', en: 'Mobility product / Concept study' },
+    overview: { zh: '该概念案例聚焦便携、可理解的操控关系与易清洁表面，探索产品的结构层级如何被视觉化表达。', en: 'This conceptual sample focuses on portability, legible controls, and easy-to-clean surfaces, exploring how product architecture can be communicated visually.' },
+    challenge: { zh: '移动产品通常需要在体积、强度、操作安全与审美之间取得平衡。过度装饰会弱化功能层级，也可能增加零件与维护负担。', en: 'Mobility products balance size, strength, operating safety, and aesthetics. Excessive decoration can obscure hierarchy and increase part count or service burden.' },
+    approach: { zh: '将高频接触区域、结构承力区域和外观表面分层处理；通过触点位置、形面转折和材质对比强化使用直觉。', en: 'Separate high-touch areas, structural zones, and outer surfaces; use control placement, transitions, and material contrast to support intuitive use.' },
+    process: [{ title: { zh: '01 / 用户任务', en: '01 / User tasks' }, text: { zh: '明确携带、启动、转向、停放与清洁任务。', en: 'Define carry, start, steer, park, and cleaning tasks.' } }, { title: { zh: '02 / 结构梳理', en: '02 / Architecture' }, text: { zh: '将主要部件与外观包覆关系组织成清晰层级。', en: 'Organize major components and outer surfaces into a clear hierarchy.' } }, { title: { zh: '03 / 视觉验证', en: '03 / Visual review' }, text: { zh: '以场景图和材质方案检查识别性与整体协调。', en: 'Review recognition and coherence through context imagery and material options.' } }],
+    outcome: { zh: '形成强调可用性、结构清晰度和低复杂度的产品概念方向。请替换为真实项目成果与图片。', en: 'A product concept direction emphasizing usability, structural clarity, and low complexity. Replace with actual project outputs and imagery.' },
+    gallery: ['/images/urban-device-detail.svg', '/images/urban-device.svg'],
+  },
+];
+
+export const digitalProjects = [
+  {
+    number: 'D.01', category: 'Digital Tool', year: '2026', cover: '/images/digital-tool.svg',
+    title: { zh: '设计资料整理工具', en: 'Design Research Organizer' },
+    summary: { zh: '一个用于归档趋势、竞品、参考图与设计判断的数字化工具概念。', en: 'A digital tool concept for organizing trends, benchmarks, visual references, and design decisions.' },
+    tags: ['Information Design', 'Workflow'],
+    href: '',
+  },
+  {
+    number: 'D.02', category: 'Web Experience', year: '2025', cover: '/images/digital-board.svg',
+    title: { zh: '项目评审看板', en: 'Concept Review Board' },
+    summary: { zh: '将方案版本、评审意见与待验证问题集中呈现，便于跨专业协作。', en: 'A concept for bringing design iterations, review feedback, and open questions into one collaborative view.' },
+    tags: ['UX', 'Design Systems'],
+    href: '',
+  },
+];

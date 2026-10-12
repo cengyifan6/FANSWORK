@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { site, copy } from '../../data/site.js';
+import { projects, digitalProjects } from '../../data/projects.js';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang === 'en' ? 'en' : 'zh';
+const t = copy[lang];
+const isEn = lang === 'en';
+---
+<BaseLayout lang={lang} title={isEn ? 'Portfolio' : '作品集'}>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-top" data-hero-reveal><span class="dot" aria-hidden="true"></span><span>{t.heroKicker}</span><span>—</span><span>{site.location[lang]}</span></div>
+    <div class="hero-content" data-hero-reveal>
+      <div class="eyebrow-row"><span>01 — 08</span><span>{isEn ? 'Form / Function / Experience' : '形态 / 功能 / 体验'}</span></div>
+      <h1 id="hero-title">{t.heroTitle}</h1>
+      <p class="hero-copy">{site.intro[lang]}</p>
+      <div class="hero-actions">
+        <a class="button-primary" href="#industrial-design">{t.viewAll}<span aria-hidden="true">↘</span></a>
+        <a class="text-link" href="#about">{isEn ? 'More about me' : '了解设计师'} <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <span class="hero-orbit-label" aria-hidden="true">DESIGN AS A SYSTEM / 2026</span>
+    <a class="hero-scroll-cue" href="#industrial-design"><span>{isEn ? 'SCROLL TO EXPLORE' : '向下探索'}</span><i aria-hidden="true"></i></a>
+    <div class="hero-bottom" data-hero-reveal><span>{site.role[lang]}</span><span>{isEn ? 'SELECTED WORK / 2024—2026' : '精选项目 / 2024—2026'}</span><span class="hero-number">01 / 08</span></div>
+  </section>
+
+  <section class="section" id="industrial-design">
+    <div class="section-inner">
+      <SectionHeading index="01" eyebrow={t.industrialTitle} title={t.selected} note={t.industrialNote} />
+      <div class="work-filter-row" aria-label={isEn ? 'Filter projects' : '筛选作品'}>
+        <div class="work-filters" role="group" aria-label={isEn ? 'Project categories' : '作品类别'}>
+          <button type="button" class="work-filter is-active" data-filter="all" aria-pressed="true">{isEn ? 'All work' : '全部作品'} <span>0{projects.length}</span></button>
+          <button type="button" class="work-filter" data-filter="Industrial Equipment" aria-pressed="false">{isEn ? 'Equipment' : '工业装备'}</button>
+          <button type="button" class="work-filter" data-filter="Mobility Design" aria-pressed="false">{isEn ? 'Mobility' : '交通工具'}</button>
+          <button type="button" class="work-filter" data-filter="Product Design" aria-pressed="false">{isEn ? 'Product' : '产品设计'}</button>
+        </div>
+        <p class="filter-status" data-filter-status aria-live="polite">{isEn ? `${projects.length} selected projects` : `已展示 ${projects.length} 个项目`}</p>
+      </div>
+      <div class="project-grid" data-project-grid>
+        {projects.map((project) => <ProjectCard project={project} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-inner">
+      <SectionHeading index="02" eyebrow={t.aboutKicker} title={t.profile} note={isEn ? 'Background / Practice / Skills' : '背景 / 实践 / 能力'} />
+      <div class="about-layout">
+        <div>
+          <h2 class="about-title">{t.aboutTitle}</h2>
+          <p class="about-copy">{t.aboutText}</p>
+        </div>
+        <div>
+          <dl class="profile-fields">
+            <div class="profile-row"><dt>{t.education}</dt><dd>{t.educationValue}<small>{t.educationNote}</small></dd></div>
+            <div class="profile-row"><dt>{t.experience}</dt><dd>{t.experienceValue}<small>{t.experienceNote}</small></dd></div>
+            <div class="profile-row"><dt>{isEn ? 'Focus' : '研究方向'}</dt><dd>{site.role[lang]}<small>{isEn ? 'Replace with verified focus areas' : '请替换为真实的专业方向'}</small></dd></div>
+          </dl>
+          <div class="skills-wrap"><h3>{t.capabilities}</h3><div class="skill-list">{t.skills.map((skill) => <span>{skill}</span>)}</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="digital-projects">
+    <div class="section-inner">
+      <SectionHeading index="03" eyebrow={t.digitalTitle} title={t.digitalTitle} note={t.digitalNote} />
+      <div class="digital-grid">
+        {digitalProjects.map((project) => (
+          <article class="digital-card">
+            <img src={project.cover} alt={project.title[lang]} width="600" height="600" loading="lazy" decoding="async" />
+            <div>
+              <div class="digital-meta">{project.number} / {project.category} / {project.year}</div>
+              <h3>{project.title[lang]}</h3>
+              <p>{project.summary[lang]}</p>
+              <div class="tag-list">{project.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+              {project.href ? <a class="text-link" href={project.href} target="_blank" rel="noopener noreferrer">{isEn ? 'Open project' : '打开项目'} <span aria-hidden="true">↗</span></a> : <span class="resume-note">{isEn ? 'Case link to be added' : '待补充真实项目链接'}</span>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section philosophy-section" id="philosophy">
+    <div class="section-inner">
+      <SectionHeading index="04" eyebrow={t.philosophyKicker} title={t.philosophyTitle} note={isEn ? 'Principles that guide my decisions' : '指导设计判断的三个原则'} />
+      <div class="principle-grid">
+        {t.principles.map((item) => <article class="principle"><span class="principle-number">{item.n}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-inner contact-section">
+      <div>
+        <SectionHeading index="05" eyebrow={t.contactKicker} title={t.contactTitle} />
+        <p class="contact-copy">{t.contactText}</p>
+      </div>
+      <div class="contact-actions">
+        <a class="contact-email" href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a>
+        <span class="resume-note">{isEn ? 'Sample address — replace in src/data/site.js before publishing.' : '示例邮箱：上线前请在 src/data/site.js 中替换为真实地址。'}</span>
+        {site.resumePath ? <a class="text-link" href={site.resumePath} download>{t.resumeLabel} <span aria-hidden="true">↓</span></a> : <span class="resume-note">{t.resumeMissing}</span>}
+        {site.social.map((item) => <a class="text-link" href={item.url} target="_blank" rel="noopener noreferrer">{item.label} <span aria-hidden="true">↗</span></a>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
